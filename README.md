@@ -1,36 +1,35 @@
-**Spring Boot Resilient Microservice with Resilience4j**
 
-Overview
+# Spring Boot Resilient Microservice with Resilience4j
 
-This project demonstrates how to build a resilient and fault-tolerant microservice using Spring Boot 3 and Resilience4j. It integrates key resilience patterns like Circuit Breaker, Rate Limiter, and Bulkhead to protect the service from failures and high load, ensuring high availability and stability.
+## Overview
 
-Features
+This project demonstrates how to build a resilient and fault-tolerant microservice using **Spring Boot 3** and **Resilience4j**. It integrates key resilience patterns like **Circuit Breaker**, **Rate Limiter**, and **Bulkhead** to protect the service from failures and high load, ensuring high availability and stability.
 
-✅ Circuit Breaker: Prevents repeated service calls when the downstream service is failing, allowing the system to recover gracefully.
+---
 
-✅ Rate Limiter: Controls the rate of incoming requests to avoid overwhelming the service during high traffic spikes.
+## Features
 
-✅ Bulkhead: Isolates resources by limiting concurrent calls, preventing cascading failures.
+- ✅ **Circuit Breaker:** Prevents repeated service calls when the downstream service is failing, allowing the system to recover gracefully.
+- ✅ **Rate Limiter:** Controls the rate of incoming requests to avoid overwhelming the service during high traffic spikes.
+- ✅ **Bulkhead:** Isolates resources by limiting concurrent calls, preventing cascading failures.
+- ✅ **Fallback Mechanisms:** Provides meaningful fallback responses when failures occur.
+- ✅ **Actuator Monitoring:** Enables real-time monitoring of service health and resilience metrics.
 
-✅ Fallback Mechanisms: Provides meaningful fallback responses when failures occur.
+---
 
-✅ Actuator Monitoring: Enables real-time monitoring of service health and resilience metrics.
+## Tech Stack
 
-<pre>
-Tech Stack
+- **Java 17**  
+- **Spring Boot 3.1.0**  
+- **Resilience4j**  
+- **Spring Boot Actuator**  
+- **Maven**  
 
-Java 17
+---
 
-Spring Boot 3.1.0
+## Project Structure
 
-Resilience4j
-
-Spring Boot Actuator
-
-Maven
-
-Project Structure
-
+```
 circuit-breaker-demo/
 ├── src/
 │   ├── main/
@@ -46,36 +45,46 @@ circuit-breaker-demo/
 │   │       └── application.yml
 ├── pom.xml
 └── README.md
+```
 
-Getting Started
+---
 
-1. Clone the Repository
+## Getting Started
 
+### 1. Clone the Repository
+
+```bash
 git clone https://github.com/your-username/circuit-breaker-demo.git
 cd circuit-breaker-demo
+```
 
-2. Build the Project
+### 2. Build the Project
 
+```bash
 mvn clean install
+```
 
-3. Run the Application
+### 3. Run the Application
 
+```bash
 mvn spring-boot:run
+```
 
-4. Access the API
+### 4. Access the API
 
-Successful Response:http://localhost:8080/api/data
+- **Successful Response:**  
+  `http://localhost:8080/api/data`
 
-Actuator Endpoints:
+- **Actuator Endpoints:**  
+  - `/actuator/health`  
+  - `/actuator/metrics/resilience4j.circuitbreaker.calls`  
+  - `/actuator/metrics/resilience4j.ratelimiter.calls`
 
-/actuator/health
+---
 
-/actuator/metrics/resilience4j.circuitbreaker.calls
+## Resilience4j Configuration
 
-/actuator/metrics/resilience4j.ratelimiter.calls
-
-Resilience4j Configuration
-
+```yaml
 resilience4j:
   circuitbreaker:
     instances:
@@ -94,31 +103,29 @@ resilience4j:
     instances:
       externalService:
         maxConcurrentCalls: 10
+```
 
-Future Enhancements
+---
 
-🔄 Docker & Kubernetes Deployment
+## Future Enhancements
 
-📊 Distributed Tracing with Zipkin/Jaeger
+- 🔄 **Docker & Kubernetes Deployment**  
+- 📈 **Distributed Tracing with Zipkin/Jaeger**  
+- 🔐 **OAuth2/JWT Security Integration**  
+- 🌐 **API Gateway Integration**
 
-🔒 OAuth2/JWT Security Integration
+---
 
-🌐 API Gateway Integration
+## Contributing
 
-Contributing
+1. Fork the repository.  
+2. Create a feature branch (`git checkout -b feature-name`).  
+3. Commit your changes (`git commit -m 'Add feature'`).  
+4. Push to the branch (`git push origin feature-name`).  
+5. Open a **Pull Request**.
 
-Fork the repository.
+---
 
-Create a feature branch (git checkout -b feature-name).
+## License
 
-Commit your changes (git commit -m 'Add feature').
-
-Push to the branch (git push origin feature-name).
-
-Open a Pull Request.
-
-License
-
-This project is licensed under the MIT License.
-
-</pre>
+This project is licensed under the **MIT License**.
