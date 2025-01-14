@@ -54,8 +54,8 @@ circuit-breaker-demo/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/circuit-breaker-demo.git
-cd circuit-breaker-demo
+git clone https://github.com/mdashikalikhan/resilience4j-library.git
+cd resilience4j-library
 ```
 
 ### 2. Build the Project
