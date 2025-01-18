@@ -9,7 +9,7 @@ public class ExternalService {
     private final Random random = new Random();
 
     public String fetchData(){
-        if(random.nextInt(20)<10){
+        if(random.nextInt(20)<17){
             throw new RuntimeException("Service Failed");
         }
         return "Data from external service";

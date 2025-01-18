@@ -1,0 +1,46 @@
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      externalService:
+        register-health-indicator: true
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 5
+        minimum-number-of-calls: 5
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10s
+        permitted-number-of-calls-in-half-open-state: 3
+        record-exceptions:
+          - java.lang.Exception
+          - java.io.IOException
+          - org.springframework.web.client.HttpServerErrorException
+        automatic-transition-from-open-to-half-open-enabled: true
+
+  ratelimiter:
+    instances:
+      externalService:
+        limit-for-period: 50
+        limit-refresh-period: 1s
+        timeout-duration: 0
+
+  bulkhead:
+    instances:
+      externalService:
+        max-concurrent-calls: 10
+        max-wait-duration: 1s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+spring:
+  application:
+    name: resilience4jlibrary
+
+management.metrics.tags.application: ${spring.application.name}
+management.metrics.distribution.percentiles-histogram.http.server.requests: true
+management.metrics.distribution.percentiles-histogram.resilience4j.circuitbreaker.calls: true
